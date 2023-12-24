@@ -1,14 +1,15 @@
 require("@nomicfoundation/hardhat-toolbox");
-
+const { myAddress1, myPrivKey1 } = require('../conf.js');
 let assert = require("assert");
 
 /** @type import('hardhat/config').HardhatUserConfig */
-let myPrivKey= "10a39b2dc8319e713187216f8235a954723219a081ba76c4f6e9d693045184ea";
-let myAddress = "0x720D96043337Ea0a49d84a04f4028c19a88F3fB0";
+
+let myAddress = myAddress1;
+let myPrivKey = myPrivKey1;
 //assert(myPrivKey);
 //assert(myAddress);
-//myPrivKey = myPrivKey.trim();
-//myAddress = myAddress.trim();
+myPrivKey = myPrivKey.trim();
+myAddress = myAddress.trim();
 module.exports = {
   
   defaultNetwork: "polygon4",

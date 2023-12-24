@@ -10,6 +10,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^3.0.0",
     "axios": "^1.6.2",
+    "ethers": "^6.8.1",
     "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
     "ipfs": "^0.66.1",

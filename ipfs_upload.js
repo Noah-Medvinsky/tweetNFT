@@ -9,26 +9,42 @@ async function uploadToIpfs() {
 
     const uploadArray = [
         {
-            path: "otter.png",
-            content: fs.readFileSync('./otter.png', {encoding: 'base64'})
-        },
-        {
-            path: "5",
-            content: {
-                name: "NFT Art",
-                description: "This is supposed to be a generic description of a tweet",
-                image: "ipfs://QmYHGtvwxnnXzkEjSwrEBAHrFo7Hfrzx5JZdrLm1qNuheX/otter.png"
-            },
-        },
-        
+            path: "downloaded_image.png",
+            content: fs.readFileSync('./downloaded_image.png', {encoding: 'base64'})
+        }
     ];
+    
+
     
     const response = await Moralis.EvmApi.ipfs.uploadFolder({
         abi: uploadArray,
     });
 
-    console.log(response.result)
-    
+    console.log(response.result[0].path)
+    let url = response.result[0].path
+    let match = url.match(/\/ipfs\/([^\/]+)/);
+    console.log("math is ",match[1])
+
+    let imageURL = "ipfs://" + match[1] + "/downloaded_image.png"
+    console.log("image URL is",imageURL)
+    const uploadJSON = [
+        {
+            path: "1",
+            content: {
+                name: "NFT Art",
+                description: "This is supposed to be a generic description of a tweet",
+                image: url
+            },
+        }
+    ]
+    const secondResponse = await Moralis.EvmApi.ipfs.uploadFolder({
+        abi: uploadJSON,
+    });
+    console.log(secondResponse.result);
+    url = secondResponse.result[0].path
+    match = url.match(/\/ipfs\/([^\/]+)/);
+    return url
+
 }
 
-uploadToIpfs();
+export { uploadToIpfs}; 

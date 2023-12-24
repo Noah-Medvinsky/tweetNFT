@@ -7,16 +7,16 @@ import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const openai = new OpenAI({apiKey: "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"});
+const openai = new OpenAI({apiKey: "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"});
 
 
-async function main() {
-  const image = await openai.images.generate({ model: "dall-e-3", prompt: "otter" });
+async function main(prompt) {
+  const image = await openai.images.generate({ model: "dall-e-3", prompt: prompt });
 
 
-  console.log(image.data);
+  return image.data[0].url
 }
-//main();
+
 
 
 
@@ -46,6 +46,5 @@ async function downloadImage(url) {
     console.error('Error downloading image:', error.message);
   }
 }
+export { main, downloadImage }; 
 
-// Call the function to download the image
-downloadImage(imageUrl);

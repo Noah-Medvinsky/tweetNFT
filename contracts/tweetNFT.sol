@@ -14,7 +14,7 @@ contract tweetNFT is ERC721{
     
     
     constructor() public ERC721("tweetNFT", "HNFT"){
-    uri = "ipfs.moralis.io:2053/ipfs/QmRUvuD5FZSfgJNkzavxAqVmg28NU1FVWRWeYaDRuAd3Sk";
+    uri = "ipfs.moralis.io:2053/ipfs/QmPP5QpMs67Eqh18junvriARv6ZQTTCVSr7KpKVsyMq1rx/1";
     }
     
    
