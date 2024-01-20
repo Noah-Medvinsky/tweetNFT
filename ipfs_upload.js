@@ -1,7 +1,6 @@
 import Moralis from "moralis";
-import fs from "fs";
 
-async function uploadToIpfs() {
+async function uploadToIpfs(data) {
 
     await Moralis.start({
         apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjM1NTU1NDdkLTNkOTktNDgxMi04M2YwLTgzNjNmNTM4ZmI3ZiIsIm9yZ0lkIjoiMzY1NzA3IiwidXNlcklkIjoiMzc1ODUwIiwidHlwZUlkIjoiNzNmNzEzOTMtZTA3Mi00NGY1LWFlMzYtNzU5YjE1NWE5OTk0IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MDA4NTk2MjgsImV4cCI6NDg1NjYxOTYyOH0.WPdCv3EdjEod6IHBNMdwl_iDjeLUbWg62U3UW0VkLnE",
@@ -10,7 +9,7 @@ async function uploadToIpfs() {
     const uploadArray = [
         {
             path: "downloaded_image.png",
-            content: fs.readFileSync('./downloaded_image.png', {encoding: 'base64'})
+            content:  data
         }
     ];
     

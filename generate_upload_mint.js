@@ -7,9 +7,10 @@ async function generatePic(){
     let url= await main(prompt);
     console.log(url)
     console.log("downloaded IMage is now")
-    await downloadImage(url)
-    let ipfs = await uploadToIpfs();
-    console.log("ipfs is " +ipfs);
+    let temp = await downloadImage(url)
+    //console.log(JSON.stringify(temp))
+    let ipfs = await uploadToIpfs(temp);
+    
     
     await mint(ipfs);
 

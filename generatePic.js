@@ -1,14 +1,14 @@
 import OpenAI from "openai";
 import axios from 'axios';
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+
+//import path from 'path'
+//import { fileURLToPath } from 'url';
+//import { dirname } from 'path';
 import pkg from '../conf.js';
 const { openAIKEY } = pkg;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const openai = new OpenAI({apiKey: openAIKEY});
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = dirname(__filename);
+const openai = new OpenAI({apiKey: openAIKEY, dangerouslyAllowBrowser: true });
 
 
 async function main(prompt) {
@@ -18,6 +18,9 @@ async function main(prompt) {
   return image.data[0].url
 }
 
+function test() {
+  console.log("this is a test");
+}
 
 
 
@@ -33,19 +36,34 @@ async function downloadImage(url) {
     });
 
     // Determine the file extension based on the content type
-    const contentType = response.headers['content-type'];
-    const extension = contentType.split('/')[1]; // Assume the content type is like "image/png" or "image/jpeg"
+    //const contentType = response.headers['content-type'];
+    //const extension = contentType.split('/')[1]; // Assume the content type is like "image/png" or "image/jpeg"
 
     // Combine the output path with the filename
-    const outputPath = path.join(__dirname, `downloaded_image.${extension}`);
+    //const outputPath = path.join(__dirname, `downloaded_image.${extension}`);
 
     // Write the binary data to a file
-    fs.writeFileSync(outputPath, response.data);
-
-    console.log(`Image downloaded and saved to: ${outputPath}`);
+    //fs.writeFileSync(outputPath, response.data);
+    
+    var base64 = btoa(
+      new Uint8Array(response.data)
+        .reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+    return base64
+    //console.log(`Image downloaded and saved to: ${outputPath}`);
   } catch (error) {
     console.error('Error downloading image:', error.message);
   }
 }
-export { main, downloadImage }; 
+
+function _arrayBufferToBase64( buffer ) {
+  var binary = '';
+  var bytes = new Uint8Array( buffer );
+  var len = bytes.byteLength;
+  for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode( bytes[ i ] );
+  }
+  return window.btoa( binary );
+}
+export { main, downloadImage, test }; 
 
