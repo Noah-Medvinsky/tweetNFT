@@ -1,4 +1,4 @@
-This is a [http://tweetnft.org/](http://tweetnft.org/) 
+
 
 ## TweetNFT
 
