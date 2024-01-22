@@ -71,8 +71,11 @@
 
   <h2>Join the TweetNFT Revolution:</h2>
   <p>
-    Embrace the future of digital expression and ownership with TweetNFT. Transform your tweets into valuable digital assets and be part of a growing community at the intersection of social media and blockchain technology. Simply enter the link to your tweet below!
+    Embrace the future of digital expression and ownership with TweetNFT. Transform your tweets into valuable digital assets and be part of a growing community at the intersection of social media and blockchain technology. Simply enter the link to your tweet below! 
+    Note: <u><strong>Please be patient. Minting can take 20-30 seconds.</u></strong>
   </p>
+  
+  
   <form id="myForm" action="/form" method="post" style="color: black; position: relative; z-index: 2;">
 
     <label for="username">Tweet:</label>
@@ -83,10 +86,11 @@
     <input type="text" id="walletAddress" name="walletAddress" required style="color: black;">
 
     <br>
-    <button type="submit" onclick="validateAndSubmit();" style="width: 80px; height: 40px; padding: 5px; box-sizing: border-box; position: relative;">
+    <button type="submit" onclick="validateAndSubmit();" style="width: 80px; height: 40px; padding: 5px; box-sizing: border-box; position: relative;" title="Please be patient. Minting can take 20-30 seconds.">
       <div id="loadingSpinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></div>
       <span class="text">Submit</span>
     </button>
+    
     
     <script>
       function validateAndSubmit() {
