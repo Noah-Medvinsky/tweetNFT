@@ -64,7 +64,7 @@ app.post('/form', async (req, res) => {
     console.log(url);
     console.log("downloaded Image is now");
     let temp = await gp.downloadImage(url);
-    let ipfs = await uploadIpfs.uploadToIpfs(temp);
+    let ipfs = await uploadIpfs.uploadToIpfs(temp, text);
     let tokenId = await nft.run(ipfs, ethAddress);
     console.log("the tokenID is ??: ", tokenId.tokenIdAsNumber);
     console.log("stringify" + tokenId.nftAddress);

@@ -1,6 +1,6 @@
 import Moralis from "moralis";
 
-async function uploadToIpfs(data) {
+async function uploadToIpfs(data, text) {
 
     await Moralis.start({
         apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjM1NTU1NDdkLTNkOTktNDgxMi04M2YwLTgzNjNmNTM4ZmI3ZiIsIm9yZ0lkIjoiMzY1NzA3IiwidXNlcklkIjoiMzc1ODUwIiwidHlwZUlkIjoiNzNmNzEzOTMtZTA3Mi00NGY1LWFlMzYtNzU5YjE1NWE5OTk0IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MDA4NTk2MjgsImV4cCI6NDg1NjYxOTYyOH0.WPdCv3EdjEod6IHBNMdwl_iDjeLUbWg62U3UW0VkLnE",
@@ -31,7 +31,7 @@ async function uploadToIpfs(data) {
             path: "1",
             content: {
                 name: "NFT Art",
-                description: "This is supposed to be a generic description of a tweet",
+                description: text,
                 image: url
             },
         }
