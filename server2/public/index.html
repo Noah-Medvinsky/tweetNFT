@@ -10,26 +10,28 @@
   <meta name="description" content="High-performance HTML based website template." />
   <style>
     body {
-      background: url('./images/galaxy2.jpg') no-repeat center center fixed;
+      background: url('./images/cosmos3.jpg') no-repeat center center fixed;
       background-size: cover;  
     }
 
     h1, h2, p, label, input {
       color: #fff; /* Set text color to white for better visibility on the background */
     }
-     #myForm input#email {
-    color: black; /* Set text color for the email input field */
-  }
+    
+    #myForm input#email {
+      color: black; /* Set text color for the email input field */
+    }
+    
     #loadingSpinner {
       display: none;
-      margin-top: 20px;
+      margin-top: 5px;
     }
 
     #loadingSpinner::before {
       content: '';
       display: block;
-      width: 50px;
-      height: 50px;
+      width: 20px;
+      height: 20px;
       border: 3px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top: 3px solid #fff;
@@ -73,21 +75,51 @@
   </p>
   <form id="myForm" action="/form" method="post" style="color: black; position: relative; z-index: 2;">
 
-
     <label for="username">Tweet:</label>
     <input type="text" id="email" name="email" required style="color: black;">
-
 
     <!-- Additional input field for Ethereum address -->
     <label for="walletAddress">Polygon Wallet Address:</label>
     <input type="text" id="walletAddress" name="walletAddress" required style="color: black;">
 
     <br>
-    <input type="submit" value="Submit" onclick="showLoading()">
+    <button type="submit" onclick="validateAndSubmit();" style="width: 80px; height: 40px; padding: 5px; box-sizing: border-box; position: relative;">
+      <div id="loadingSpinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></div>
+      <span class="text">Submit</span>
+    </button>
+    
+    <script>
+      function validateAndSubmit() {
+        var tweetInput = document.getElementById('email');
+        var walletAddressInput = document.getElementById('walletAddress');
+    
+        // Check if both fields are filled out
+        if (tweetInput.value.trim() === '' || walletAddressInput.value.trim() === '') {
+          alert('Please fill out both fields before submitting.');
+          return;
+        }
+    
+        // If both fields are filled out, proceed with submission
+        showLoading();
+        document.querySelector('.text').style.display = 'none';
+        document.getElementById('loadingSpinner').style.display = 'block';
+    
+        // Perform additional submission logic if needed
+      }
+    
+      function showLoading() {
+        // Show the loading spinner
+        document.getElementById('loadingSpinner').style.display = 'block';
+      }
+    </script>
+    
+    
+    
+    
+    
+    
+    
   </form>
-
-  <!-- Loading spinner -->
-  <div id="loadingSpinner"></div>
 
   <!-- Connect Wallet Button or Connected message -->
   <div id="connectWalletButton"></div>

@@ -49,62 +49,56 @@ app.get('/user', (req, res) => {
 })
 
 app.post('/form', async (req, res) => {
+  try {
+    const email = req.body.email;
+    const ethAddress = req.body.walletAddress;
 
-  
-  
+    const gp = await import('../generatePic.js');
+    const uploadIpfs = await import('../ipfs_upload.js');
+    const nft = await import('../test/mintNFT.js');
+    const tweet = await import('../tweet.js');
 
-  const email = req.body.email;
-  console.log("email=" + email);
-  console.log(req.body);
- 
-  const ethAddress = req.body.walletAddress;
-  console.log("add is "+ethAddress)
-  const gp = await import('../generatePic.js');
-  const uploadIpfs= await import('../ipfs_upload.js')
-  const nft = await import('../test/mintNFT.js');
-  const tweet = await import('../tweet.js');
-  
-  let text = await tweet.getTweetText(email);
-  console.log(text);
- 
-  gp.test();
- 
-  let url= await gp.main(text);
-  console.log(url)
-  console.log("downloaded IMage is now" )
-  let temp = await gp.downloadImage(url)
-  let ipfs = await uploadIpfs.uploadToIpfs(temp);
-  let tokenId = await nft.run(ipfs, ethAddress);
-  console.log("the tokenID is ??: ",tokenId.tokenIdAsNumber)
-  console.log("stringify"+tokenId.nftAddress)
-  const replyHTML = `
-    <html>
-      <head>
-        <title>Form Submission Reply</title>
-      </head>
-      <body>
-        <h1>Thank you for your submission!</h1>
-        <p>Your form data has been received and processed. Your NFT has been minted.</p>
-        
-        <h2>NFT Details:</h2>
-        <p>NFT Address: ${tokenId.nftAddress}</p>
-        <p>NFT ID: ${tokenId.tokenIdAsNumber}</p>
-        
-        <h2>How to View Your NFT:</h2>
-        <ol>
-          <li>Visit a compatible NFT marketplace or wallet.</li>
-          <li>Use the provided NFT address and ID to search for your NFT.</li>
-          <li>Enjoy your unique digital collectible!</li>
-        </ol>
-        
-        <!-- Add more formatted content as needed -->
-      </body>
-    </html>
-  `;
+    let text = await tweet.getTweetText(email);
+    gp.test();
+    let url = await gp.main(text);
+    console.log(url);
+    console.log("downloaded Image is now");
+    let temp = await gp.downloadImage(url);
+    let ipfs = await uploadIpfs.uploadToIpfs(temp);
+    let tokenId = await nft.run(ipfs, ethAddress);
+    console.log("the tokenID is ??: ", tokenId.tokenIdAsNumber);
+    console.log("stringify" + tokenId.nftAddress);
 
-  // Send the formatted HTML as the response
-  res.send(replyHTML);
-})
+    const replyHTML = `
+      <html>
+        <head>
+          <title>Form Submission Reply</title>
+        </head>
+        <body>
+          <h1>Thank you for your submission!</h1>
+          <p>Your form data has been received and processed. Your NFT has been minted.</p>
+          <h2>NFT Details:</h2>
+          <p>NFT Address: ${tokenId.nftAddress}</p>
+          <p>NFT ID: ${tokenId.tokenIdAsNumber}</p>
+          <h2>How to View Your NFT on OpenSea:</h2>
+          <ol>
+            <li>Visit <a href="https://opensea.io/" target="_blank">OpenSea</a>.</li>
+            <li>Log in or connect your wallet to the platform.</li>
+            <li>Use the provided NFT address and ID to search for your NFT.</li>
+            <li>Enjoy exploring and showcasing your unique digital collectible!</li>
+          </ol>
+        </body>
+      </html>
+    `;
+
+    // Send the formatted HTML as the response
+    res.send(replyHTML);
+  } catch (error) {
+    console.error("Error in form submission:", error);
+    res.status(500).send('There was an error with your submission or your tweet likely goes against OpenAi\'s content policy. Please try again with a different tweet');
+  }
+});
+
 
 
 app.listen(80);
