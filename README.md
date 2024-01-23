@@ -30,14 +30,14 @@ Share your TweetNFTs with your followers, friends, or the wider NFT community. M
 
 ## 7.How to Get Started:
 
-First find a tweet that you want to turn into an NFT!  
+1. First find a tweet that you want to turn into an NFT!  
 ![Screenshot 2024-01-22 204051](https://github.com/Noah-Medvinsky/tweetNFT/assets/152045716/5a0dc8e7-4646-45df-b39b-d2f1c8fe88d9)
 <p>&nbsp;</p>
 
-Next visit our website [http://tweetnft.org/](http://tweetnft.org/), and paste in the tweet url as well as your wallet address
+2. Next visit our website [http://tweetnft.org/](http://tweetnft.org/), and paste in the tweet url as well as your wallet address
 ![Screenshot 2024-01-22 180855](https://github.com/Noah-Medvinsky/tweetNFT/assets/152045716/8913de65-828d-49f6-8993-fecfd32a9a2f)
 
-Boom! Just like that your done. 
+3. Boom! Just like that your done. 
 ![image](https://github.com/Noah-Medvinsky/tweetNFT/assets/152045716/426174c6-6e0e-4345-b1fb-b8216f4f23ac)
 
 You can view your NFT on opensea. By simply searching for the NFT address or connecting your wallet and clicking on your own profile to view your collection of NFTs!
