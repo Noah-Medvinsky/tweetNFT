@@ -1,10 +1,15 @@
 import Moralis from "moralis";
 
+import pkg from '../conf.js';
+const { moralisKey } = pkg;
+
+await Moralis.start({
+    apiKey: moralisKey,
+});
+
 async function uploadToIpfs(data, text) {
 
-    await Moralis.start({
-        apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjM1NTU1NDdkLTNkOTktNDgxMi04M2YwLTgzNjNmNTM4ZmI3ZiIsIm9yZ0lkIjoiMzY1NzA3IiwidXNlcklkIjoiMzc1ODUwIiwidHlwZUlkIjoiNzNmNzEzOTMtZTA3Mi00NGY1LWFlMzYtNzU5YjE1NWE5OTk0IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MDA4NTk2MjgsImV4cCI6NDg1NjYxOTYyOH0.WPdCv3EdjEod6IHBNMdwl_iDjeLUbWg62U3UW0VkLnE",
-    });
+   
 
     const uploadArray = [
         {
@@ -46,4 +51,4 @@ async function uploadToIpfs(data, text) {
 
 }
 
-export { uploadToIpfs}; 
+export { uploadToIpfs};     
