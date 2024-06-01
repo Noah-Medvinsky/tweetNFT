@@ -34,7 +34,7 @@ Share your TweetNFTs with your followers, friends, or the wider NFT community. M
 ![Screenshot 2024-01-22 204051](https://github.com/Noah-Medvinsky/tweetNFT/assets/152045716/5a0dc8e7-4646-45df-b39b-d2f1c8fe88d9)
 <p>&nbsp;</p>
 
-2. Next visit our website [http://tweetnft.org/](http://tweetnft.org/), and paste in the tweet url as well as your wallet address
+2. Next visit our website [http://tweetnft.org/](http://tweetnft.org/) (website currently disabled due to operation costs), and paste in the tweet url as well as your wallet address
 ![Screenshot 2024-01-22 180855](https://github.com/Noah-Medvinsky/tweetNFT/assets/152045716/8913de65-828d-49f6-8993-fecfd32a9a2f)
 
 3. Boom! Just like that your done. 
